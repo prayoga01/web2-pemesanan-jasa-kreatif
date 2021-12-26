@@ -32,7 +32,7 @@
             <a class="nav-link" href="/pesanans/create">Pesan Jasa</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/about">Tentang</a>
+            <a class="nav-link" href="/testimonis">Tentang</a>
           </li>
           @auth
           <li class="nav-item">
