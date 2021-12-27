@@ -32,12 +32,17 @@
             <a class="nav-link" href="/pesanans/create">Pesan Jasa</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/about">Tentang</a>
+            <a class="nav-link" href="/testimonis">Tentang</a>
           </li>
           @auth
           <li class="nav-item">
             <a class="nav-link " href="/pesanans" tabindex="-1" >Daftar Pesanan</a>
           </li>
+          @if (!strcmp(auth()->user()->role,'admin'))              
+            <li class="nav-item">
+              <a class="nav-link" href="/laporans">Laporan</a>
+            </li>
+          @endif
           @endauth
         </ul>
         <ul class="navbar-nav ms-auto">

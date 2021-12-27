@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
 use App\Http\Controllers\PesananController;
-
+use App\Http\Controllers\TestimoniController;
 use Illuminate\Support\Facades\Route;
 
 use function Ramsey\Uuid\v1;
@@ -54,5 +55,8 @@ Route::get('/about', function () {
 
 Route::resource('/pesanans', PesananController::class)->middleware('auth');
 
+Route::resource('/testimonis', TestimoniController::class)->middleware('auth');
 
+
+Route::get('/laporans', [LaporanController::class,'index'])->middleware('auth','test_admin');
 
