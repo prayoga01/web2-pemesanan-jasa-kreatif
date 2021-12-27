@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MailSend;
 use App\Models\Pesanan;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PesananController extends Controller
 {
@@ -119,6 +121,19 @@ class PesananController extends Controller
                 'dedline' => 'required',
                 'budget' => 'required' 
             ]);
+            // PENGIRIM EMAIL
+
+            $details = [
+                'judul' => $validatedData['judul_proyek'],
+                'jenis' => $validatedData['jenis_pesanan'],
+                'budget' => $validatedData['budget'],
+                'status' => 'menunggu',
+                'header' => 'Perubahan Status Pemesanan'
+            ];
+
+
+            Mail::to(auth()->user()->email)->send(new MailSend($details));
+
             // dd($request->input('id'));
             Pesanan::where('id',$pesanan->id)->update($validatedData);
             $request->session()->flash('success','Pesanan Berhasil Di Ubah'); 
@@ -128,6 +143,24 @@ class PesananController extends Controller
         $validatedData = $request->validate([
             'status' => 'required'
         ]);
+        $pesanann = Pesanan::where('id',$request->input('id'))->first();
+
+        $emailPemesan = User::find($pesanann->user_id)->email;
+
+        // PENGIRIM EMAIL
+
+        $details = [
+            'judul' => $pesanann->judul_proyek,
+            'jenis' => $pesanann->jenis_pesanan,
+            'budget' => $pesanann->budget,
+            'status' => $validatedData['status'],
+            'header' => 'Perubahan Status Pemesanan'
+        ];
+
+        // dd($details,$emailPemesan);
+
+        Mail::to($emailPemesan)->send(new MailSend($details));
+
         // dd($request->input('id'));
         Pesanan::where('id',$request->input('id'))->update($validatedData);
         $request->session()->flash('success','Status Pesanan Berhasil Di Ubah');
