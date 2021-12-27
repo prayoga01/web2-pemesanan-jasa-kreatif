@@ -37,7 +37,7 @@ class PesananController extends Controller
     {
         //
         return view('pemesanan.pesanjasa');
-       
+
     }
 
     /**
@@ -63,6 +63,17 @@ class PesananController extends Controller
         $validatedData['user_id'] = auth()->user()->id;
 
         Pesanan::create($validatedData);
+
+        $details = [
+            'judul' => $validatedData['judul_proyek'],
+            'jenis' => $validatedData['jenis_pesanan'],
+            'budget' => $validatedData['budget'],
+            'status' => 'menunggu',
+            'header' => 'Pemesanan Jasa Kreatif'
+        ];
+
+
+        // Mail::to(auth()->user()->email)->send(new MailSend($details));
 
         $request->session()->flash('success','Pesanan Berhasil Di Simpan');
 
