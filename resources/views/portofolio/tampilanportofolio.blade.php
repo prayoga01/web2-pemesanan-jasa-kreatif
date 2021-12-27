@@ -26,15 +26,18 @@
 <div class="row justify-content-md-center">
     <h1 class="text-center pt-5">PORTOFOLIO</h1>
 
-    <div class="row row-cols-3 pb-4 mt-n3 justify-content-md-center">
+    <div class="row row-cols-3 pb-4 mt-n3 px-6 ">
         @foreach($testimonis as $testimoni)
-        <div class="col text-center">
-            <iframe width="1309" height="499" src="{{ $testimoni->url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-            p></p>
+        <div class="col-sm bg-info " style="text-align:center;">
+            <iframe width="300" height="300" src="{{ $testimoni->url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+            <p></p>
             <b for="Judul_Proyek">Judul Proyek :</b>
             <div>{{ $testimoni->pesanan->judul_proyek }}</div>
             <b for="Jenis_Pesanan">Jenis Pesanan : </b>
             <div>{{ $testimoni->pesanan->jenis_pesanan }}</div>
+            <b for="ID_pesanan">ID Pesanan : </b>
+            <div>{{ $testimoni->pesanan_id }}</div>
+
         </div>
         @endforeach
     </div>

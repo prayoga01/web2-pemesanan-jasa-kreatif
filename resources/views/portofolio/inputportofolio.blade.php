@@ -35,9 +35,19 @@
             <div>{{ $testimoni->pesanan->judul_proyek }}</div>
             <b for="Jenis_Pesanan">Jenis Pesanan : </b>
             <div>{{ $testimoni->pesanan->jenis_pesanan }}</div>
-            <b for="ID_pesanan" style="">ID Pesanan : </b>
+            <b for="ID_pesanan" >ID Pesanan : </b>
             <div>{{ $testimoni->pesanan_id }}</div>
-
+            <a class="btn btn-primary" href="/testimonis/{{ $testimoni->id }}/edit">
+            Edit Portofolio
+            </a>
+            <form action="/testimonis/{{ $testimoni->id }}" method="POST">
+                @csrf
+                @method('delete')
+                <button type="submit" class="btn btn-danger">
+                    Hapus Portofolio
+                </button>
+            </form>
+            
         </div>
         @endforeach
     </div>
@@ -57,7 +67,7 @@
 
 
 
-<!-- Modal -->
+<!-- Modal input porto -->
 <div class="modal fade" id="modalinputdataporto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -112,5 +122,11 @@
         </div>
     </div>
 </div>
+
+<!-- Modal input porto -->
+<div class="modal fade" id="modaleditporto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+</div>
+
 </div>
 @endsection

@@ -77,7 +77,10 @@ class TestimoniController extends Controller
      */
     public function edit(Testimoni $testimoni)
     {
-        //
+        return view('portofolio.editportofolio', [
+            'testimoni'=> $testimoni,
+            'pesanans'=> Pesanan::all()
+        ]);
     }
 
     /**
@@ -89,7 +92,12 @@ class TestimoniController extends Controller
      */
     public function update(Request $request, Testimoni $testimoni)
     {
-        //
+        $testimoni->pesanan_id = $request->get('pesanan_id');
+        $testimoni->url = $request->get('url');
+        $testimoni->save();
+        $request->session()->flash('success','Testimoni berhasil di update');
+
+        return redirect('dashboard');
     }
 
     /**
@@ -100,6 +108,8 @@ class TestimoniController extends Controller
      */
     public function destroy(Testimoni $testimoni)
     {
-        //
+        $testimoni->delete();
+
+        return redirect('dashboard')->with('success','Testimoni berhasil di hapus');
     }
 }
