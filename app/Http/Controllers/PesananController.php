@@ -110,6 +110,10 @@ class PesananController extends Controller
         //
         if(!strcmp(auth()->user()->role,'user')){
             $validatedData = $request->validate([
+                'jenis_pesanan' => 'required',
+                'penanggungjawab' => 'required',
+                'perusahaan' => 'required',
+                'nomor_penanggungjawab' => 'required',
                 'judul_proyek' => 'required',
                 'deskripsi' => 'required',
                 'dedline' => 'required',

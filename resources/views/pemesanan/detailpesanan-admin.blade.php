@@ -65,8 +65,37 @@
                                 <input type="text" readonly class="form-control-plaintext" id="limitbudget" name="budget" value="{{ $pesanan->budget }}">
                             </div>
                         </div>
+                        <div class="form-group row mb-2">
+                            <label for="status" class="col-4 col-form-label">Status</label>
+                            <div class="col-8">
+                                <input type="text" readonly class="form-control-plaintext" id="status" name="budget" value="{{ $pesanan->status }}">
+                            </div>
+                        </div>
+                        @if (!strcmp($pesanan->status,"menunggu"))
+              
                         <button class="btn btn-success" type='submit' name="status" value="Diterima">Accept</button>
                         <button class="btn btn-outline-danger" type='submit' name="status" value="Ditolak">Decline</button>
+                            
+                        @endif
+
+                        @if (!strcmp($pesanan->status,"Diterima"))
+              
+                        <button class="btn btn-success" type='submit' name="status" value="Menunggu Payment">Menunggu Payment</button>
+                            
+                        @endif
+
+                        @if (!strcmp($pesanan->status,"Menunggu Payment"))
+              
+                        <button class="btn btn-success" type='submit' name="status" value="Dikerjakan">Dikerjakan</button>
+                            
+                        @endif
+
+                        @if (!strcmp($pesanan->status,"Dikerjakan"))
+              
+                        <button class="btn btn-success" type='submit' name="status" value="Selesai">Selesai</button>
+                            
+                        @endif
+                        
                         <a class="btn btn-outline-danger" href="/pesanans">Kembali</a>
                     </form>
 
