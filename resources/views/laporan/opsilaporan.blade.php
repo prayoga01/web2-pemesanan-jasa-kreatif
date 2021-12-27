@@ -19,7 +19,7 @@
                                     <h1 class="text-center"><i class="bi bi-stack"></i></h1>
                                 </div>
                                 <h5 class="card-title text-center"><b>List Pesanan</b></h5>
-                                <p class="card-text">Laporan berisi List Pesanan sesuai tangal yang dipilih</p>
+                                <p class="card-text">Laporan berisi List Pesanan sesuai rentang tangal deadline yang dipilih</p>
                                 <div class="row">
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal">
@@ -37,7 +37,7 @@
                                     <h1 class="text-center"><i class="bi bi-file-earmark-richtext-fill"></i></h1>
                                 </div>
                                 <h5 class="card-title text-center"><b>Detil Pesanan</b></h5>
-                                <p class="card-text">Mencetak detil pesanan yang dipilih</p>
+                                <p class="card-text">Mencetak detil pesanan sesuai data dipilih</p>
                                 <div class="row">
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal2">
@@ -87,8 +87,8 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="tanggal_mulai"
-                                    class="form-label @error('tanggal_mulai') is-invalid @enderror">Tanggal Mulai</label>
-                                <input type="datetime-local" class="form-control" id="tanggal_mulai" name="tanggal_mulai">
+                                    class="form-label @error('tanggal_mulai') is-invalid @enderror">Start</label>
+                                <input type="date" class="form-control" id="tanggal_mulai" name="tanggal_mulai">
                                 @error('tanggal_mulai')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -99,8 +99,8 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="tanggal_selesai"
-                                    class="form-label @error('tanggal_selesai') is-invalid @enderror">Tanggal Selesai</label>
-                                <input type="datetime-local" class="form-control" id="tanggal_selesai" name="tanggal_selesai">
+                                    class="form-label @error('tanggal_selesai') is-invalid @enderror">End</label>
+                                <input type="date" class="form-control" id="tanggal_selesai" name="tanggal_selesai">
                                 @error('tanggal_selesai')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -134,9 +134,9 @@
                     <div class="row">
                         <select class="form-select" aria-label="Default select example" id="pesanan_id" name="pesanan_id">
                             <option value=null selected>Pilih Projek</option>
-                            {{-- @foreach ($pesanans as $pesanan)
+                            @foreach ($pesanans as $pesanan)
                                 <option value="{{ $pesanan->id }}">{{ $pesanan->id }} : {{ substr($pesanan->judul_proyek,0,30) }}</option>
-                            @endforeach --}}
+                            @endforeach
                         </select>
                     </div>
 
@@ -166,7 +166,7 @@
                             <div class="mb-3">
                                 <label for="tanggal_mulai"
                                     class="form-label @error('tanggal_mulai') is-invalid @enderror">Tanggal Mulai</label>
-                                <input type="datetime-local" class="form-control" id="tanggal_mulai" name="tanggal_mulai">
+                                <input type="date" class="form-control" id="tanggal_mulai" name="tanggal_mulai">
                                 @error('tanggal_mulai')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -178,7 +178,7 @@
                             <div class="mb-3">
                                 <label for="tanggal_selesai"
                                     class="form-label @error('tanggal_selesai') is-invalid @enderror">Tanggal Selesai</label>
-                                <input type="datetime-local" class="form-control" id="tanggal_selesai" name="tanggal_selesai">
+                                <input type="date" class="form-control" id="tanggal_selesai" name="tanggal_selesai">
                                 @error('tanggal_selesai')
                                 <div class="invalid-feedback">
                                     {{ $message }}

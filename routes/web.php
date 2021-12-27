@@ -60,3 +60,9 @@ Route::resource('/testimonis', TestimoniController::class)->middleware('auth');
 
 Route::get('/laporans', [LaporanController::class,'index'])->middleware('auth','test_admin');
 
+Route::post('/laporans/list', [LaporanController::class,'laporanlist'])->middleware('auth','test_admin');
+
+Route::post('/laporans/detil', [LaporanController::class,'laporandetil'])->middleware('auth','test_admin');
+
+Route::post('/laporans/pendapatan', [LaporanController::class,'laporanperforma'])->middleware('auth','test_admin');
+
