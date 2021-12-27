@@ -35,7 +35,7 @@
               <form clas="d-inline" method='POST' action="/pesanans/{{ $pesanan->id }}">
               @method('PATCH')
               @csrf
-              <input type='hidden' name="id" value="{{ $pesanan->id }}"></input>
+              <input type='hidden' name="id" value="{{ $pesanan->id }}">
                 <button class="btn btn-success" type='submit' name="status" value="Diterima">Accept</button>
                 <button class="btn btn-outline-danger" type='submit' name="status" value="Ditolak">Decline</button>
               </form>
