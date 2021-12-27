@@ -65,7 +65,9 @@
                                 <input type="text" class="form-control" id="limitbudget" name="budget" value="{{ $pesanan->budget }}">
                             </div>
                         </div>
-                        <button class="btn btn-primary" type='submit'>Simpan Perubahan</button>
+                        @if (!strcmp($pesanan->status,'menunggu'))
+                            <button class="btn btn-primary" type='submit'>Simpan Perubahan</button>
+                        @endif
                         <a class="btn btn-outline-danger" href="/pesanans">Kembali</a>
                     </form>
 
